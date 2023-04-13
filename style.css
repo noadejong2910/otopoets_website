@@ -1,0 +1,682 @@
+/* Roboto & source code pro
+font-family: 'Roboto', sans-serif;
+font-family: 'Source Code Pro', monospace; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&family=Source+Code+Pro:wght@300;400;500;600;700;800;900&display=swap');
+
+
+/* Koppen Oswald */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+
+/* Tangerine (handwritten) */
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+
+/* Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+    /* --primary-color: #9740c9; */
+    --primary-color: #de30cd;
+    --black-color: rgb(20, 20, 20);
+    --dark-black: rgb(7, 7, 7);
+    --white-color: #fff;
+    --white-smoke: rgb(224, 224, 224);
+    --light-grey: #C0C0C0;
+    --grey-color: #5a5a5a;
+    --dark-grey: #434343; 
+}
+
+
+/* Nav */
+.nav-container {
+    min-height: 90vh;
+    width: 100%;
+    background-image: linear-gradient(135deg, var(--primary-color) 0%, #b8b8b8 74%);
+    overflow-x: hidden;
+    transform-style: preserve-3d;
+    object-fit:cover;
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    height: 3rem;
+  }
+  
+  .menu {
+    max-width: 72rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--white-smoke)
+  }
+  
+  .logo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 4rem;
+  }
+  
+  .logo span {
+    font-weight: 300;
+  }
+  
+  .hamburger-menu {
+    height: 4rem;
+    width: 3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .bar {
+    width: 1.9rem;
+    height: 1.5px;
+    border-radius: 25px;
+    background-color: var(--white-smoke);
+    transition: 0.5s;
+    position: relative;
+  }
+  
+  .bar:before,
+  .bar:after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: var(--white-smoke);
+    transition: 0.5s;
+  }
+  
+  .bar:before {
+    transform: translateY(-9px);
+  }
+  
+  .bar:after {
+    transform: translateY(9px);
+  }
+  
+  .nav-container .nav-main {
+    position: relative;
+    width: 100%;
+    left: 0;
+    z-index: 5;
+    overflow: hidden;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: 0.5s;
+  }
+  
+  .nav-container.active .bar {
+    transform: rotate(360deg);
+    background-color: transparent;
+  }
+  
+  .nav-container.active .bar:before {
+    transform: translateY(0) rotate(45deg);
+  }
+  
+  .nav-container.active .bar:after {
+    transform: translateY(0) rotate(-45deg);
+  }
+  
+  .nav-container.active .nav-main {
+    animation: main-animation 0.5s ease;
+    cursor: pointer;
+    transform: perspective(1200px) rotateY(20deg) translateZ(310px) scale(0.5);
+  }
+  
+  @keyframes main-animation {
+    from {
+      transform: translate(0);
+    }
+  
+    to {
+      transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+    }
+  }
+  
+  .nav-links {
+    position: absolute;
+    width: 30%;
+    right: 0;
+    top: 0;
+    height: 90vh;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nav-links a {
+    padding: 0.7rem 0;
+    display: inline-block;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: hide 0.5s forwards ease;
+  }
+  
+  .nav-container.active .nav-links a {
+    animation: appear 0.5s forwards ease var(--i);
+  }
+  
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  
+  @keyframes hide {
+    from {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+  
+  .shadow {
+    position: absolute;
+    width: 100%;
+    height: 90vh;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: 0.5s;
+    background-color: rgb(0, 0, 0);
+  }
+  
+  .shadow.one {
+    z-index: -1;
+    opacity: 0.15;
+  }
+  
+  .shadow.two {
+    z-index: -2;
+    opacity: 0.1;
+  }
+  
+  .nav-container.active .shadow.one {
+    animation: shadow-one 0.6s ease-out;
+    transform: perspective(1300px) rotateY(20deg) translateZ(215px) scale(0.5);
+  }
+  
+  @keyframes shadow-one {
+    0% {
+      transform: translate(0);
+    }
+  
+    5% {
+      transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+    }
+  
+    100% {
+      transform: perspective(1300px) rotateY(20deg) translateZ(215px) scale(0.5);
+    }
+  }
+  
+  .nav-container.active .shadow.two {
+    animation: shadow-two 0.6s ease-out;
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) scale(0.5);
+  }
+  
+  @keyframes shadow-two {
+    0% {
+      transform: translate(0);
+    }
+  
+    20% {
+      transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+    }
+  
+    100% {
+      transform: perspective(1300px) rotateY(20deg) translateZ(120px) scale(0.5);
+    }
+  }
+  
+  .nav-container.active .nav-main:hover + .shadow.one {
+    transform: perspective(1300px) rotateY(20deg) translateZ(230px) scale(0.5);
+  }
+  
+  .nav-container.active .nav-main:hover {
+    transform: perspective(1300px) rotateY(20deg) translateZ(340px) scale(0.5);
+  }
+  
+/* Header */
+.header {
+    width: 100%;
+    height: 90vh;
+    background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.6),#000000), url(/img/polijsten-2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.header-content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: var(--white-color);
+}
+
+.header-text {
+    padding: 50px;
+}
+
+.header .small {
+    padding: 6px 0;
+} 
+
+
+
+
+
+
+
+/***** Index *****/
+/* Hero 
+.index-hero {
+    position: relative;
+}
+
+.index-hero img {
+    width: 100%;
+    height: 90vh;
+    object-fit:cover;
+}
+
+.index-text {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    justify-content: center;
+    margin: 20% 15%;
+}
+.index-text h2 {
+    font-size: 40px;
+}
+
+.gradient {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90vh;
+    background: linear-gradient(180deg,#000000 0%,#000000 100%);
+    opacity: 0.6;
+} */
+
+/* Main 
+.index-main-content {
+    padding: 50px 0;
+} 
+*/
+
+/* Icons 
+.icon-item i {
+    color: var(--primary-color);
+}
+.icon-item:hover i {
+    color: var(--orange-color);
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+
+.icons-section {
+    padding: 120px 0;
+    background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.6),#000000), url(/img/Auto_polijsten.jpeg);
+    width: 100%;
+    background-attachment: fixed;
+    background-size: cover;
+}
+*/
+
+/***** Index *****/
+/* Index Header */
+.index-header {
+    width: 100%;
+    height: 90vh;
+    background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.6),#000000), url(/img/polijsten-2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.index-header-content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: var(--white-color);
+}
+
+.index-header-text {
+    padding: 50px;
+}
+
+.index-header .small {
+    padding: 6px 0;
+} 
+
+/* Index main */
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden
+}
+.slider-content {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    transform-style: preserve-3d;
+    animation: rotate 50s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+
+    100% {
+        transform: perspective(1000px) rotateY(360deg);
+    }
+}
+
+.slider span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i)*45deg)) translateZ(270px);
+}
+
+.slider span img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: 2s;
+}
+
+/* Index icons */
+.icon-item i {
+    color: var(--white-color);
+}
+
+.icon-item h4{
+    margin: 10px 0;
+}
+
+.icons-section {
+    padding: 60px 0;
+    background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.6),#000000), url(/img/velg-2.jpg);
+    width: 100%;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Index cards */
+
+
+/* Index klanten */
+.klanten {
+  padding: 40px 0;
+  background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.6),#000000), url(/img/velg-2.jpg);
+  width: 100%;
+  background-attachment: fixed;
+  background-size: cover;}
+
+.klanten-logo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+
+
+/***** Projecten *****/
+/* Projecten before-after slider */
+.line-container{
+    margin: 70px auto;
+}
+
+.line1 {
+    margin-top: -1px;
+}
+
+.bef-aft-slider {	
+	--width: 794px;
+	--height: 446px;
+	
+	position: relative;
+	width: var(--width);
+	height: var(--height);
+	overflow: hidden;	
+}
+
+.image__img {
+    background: url('/img/poetsen.jpg');
+    position: absolute;
+    height: 100%;
+    background-size: var(--width) var(--height);
+}
+
+.image__img:first-child {
+    left: 0;
+    width: 100%;
+    background-position: center left;
+}
+
+.image__img:last-child {
+    right: 0;
+    width: calc(100% - var(--x, 50%));
+    background-position: center right;
+    filter: grayscale(100%);
+    box-shadow: inset 2px 0 0 #111, -2px 0 0 #111;
+}
+
+
+/***** Over ons *****/
+/* Personeel */
+/* .personeel .card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.personeel .card {
+  background-color:var(--dark-black);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.personeel .card img {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  margin: 30px;
+}
+
+.personeel .card .card-content {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding: 10px;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***** Interieur reiniging ******/
+/* Bef-aft-slider */
+.cont-bef-aft-slider .bef-aft-slider {
+  margin-bottom: 4em;
+}
+/* Werkwijze */
+.werkwijze {
+  background: var(--dark-black);
+}
+.werkwijze-skewed {
+  width: 100%; 
+  color: #f1f1f1;
+  display: flex;
+  background: var(--black-color);
+  margin: 1em 0;
+}
+
+.werkwijze-skewed .skewed-text {
+  padding: 1.5em;
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.werkwijze-skewed .skewed-image {
+  width: 50%;
+  height: 20em;
+  position: relative;
+  overflow: hidden;
+}
+
+.werkwijze-skewed .skewed-image::before {
+  content: "";
+  position: absolute;
+  left: -6.1em;
+  top: 50%;
+  transform: translateY(-50%) rotate(20deg);
+  background: var(--black-color);
+  width: 40%;
+  height: 140%;
+}
+
+.werkwijze-skewed-left .skewed-image::before {
+  transform: translateY(-50%) rotate(20deg);
+  left: initial;
+  right: -6.1em;
+}
+.werkwijze-skewed-right .skewed-image::before {
+  transform: translateY(-50%) rotate(160deg);
+  left: initial;
+  left: -6.1em;
+}
+.werkwijze-skewed .skewed-image img {
+  width: 140%;
+}
+
+
+
+/***** Contact *****/
+/* Social icons */
+.contact-social-container {
+  display: flex;
+  justify-content:space-evenly;
+}
+
+.contact-social-container i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  color: var(--black-color);
+}
+
+
+
+
+/***** Footer *****/
+footer {
+ background-color: var(--dark-black);
+}
+
+footer .logo {
+  font-size: 30px;
+  padding: 2rem;
+}
+
+footer .footer-text {
+  margin: 0 auto;
+  text-align: left;
+}
+
+footer .footer-menu i{
+  color: var(--primary-color);
+  margin-right: 5px
+}
+
+footer .social-icons i {
+  padding: 5px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  color: var(--black-color);
+
+}
+
+footer .dotted-line {
+  margin: 2rem auto;
+}
+
+footer .designed-by {
+  padding: 20px;
+} 
+
