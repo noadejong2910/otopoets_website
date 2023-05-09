@@ -17,6 +17,7 @@
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
+  max-width: 450px;
 }
 
 /* .flip-card */
@@ -29,20 +30,13 @@
   transition: .6s .1s;
 }
 
-
-/* hover and focus-within states */
-.flip-card-container:hover .flip-card,
-.flip-card-container:active .flip-card,
-.flip-card-container:focus-within .flip-card {
-  transform: rotateY(180deg);
-}
-
 /* .card-... */
 .card-front,
 .card-back {
   width: 100%;
   height: 100%;
   border-radius: 24px;
+  padding-bottom: 20px;
 
   background: var(--dark);
   position: absolute;
@@ -144,14 +138,6 @@
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
 }
 
-/* hover state */
-/* .flip-card-container:hover .card-front .img-bg::before,
-.flip-card-container:active .card-front .img-bg::before {
-  width: 6px;
-  border-left-color: var(--primary);
-  border-right-color: var(--primary);
-} */
-
 /* flipcard ul */
 .flip-card ul {
   padding-top: 40%;
@@ -196,35 +182,6 @@
 
   background: currentColor;
   opacity: .2;
-}
-
-/* button */
-.flip-card button {
-  font-family: inherit;
-  font-weight: bold;
-  color: var(--white-1);
-
-  letter-spacing: 2px;
-
-  padding: 9px 20px;
-  border: 1px solid var(--grey);
-  border-radius: 1000px;
-  background: transparent;
-  transition: .3s;
-
-  cursor: pointer;
-}
-
-.flip-card button:hover,
-.flip-card button:active,
-.flip-card button:focus {
-  color: var(--primary);
-  background: hsla(var(--hue), 25%, 10%, .2);
-  border-color: currentColor;
-}
-
-.flip-card button:active {
-  transform: translate(2px);
 }
 
 /* smaller button */
@@ -341,4 +298,5 @@
   --tr: 20;
   --op: .7;
 }
+
 
