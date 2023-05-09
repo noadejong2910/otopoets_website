@@ -18,10 +18,10 @@
 
     <div class="nav-container">
         <div class="navbar">
-          <div class="menu">
-            <a href="index.html">
+            <div class="menu" id="menu">
+                <a href="index.html">
                 <h3 class="logo">Otopoets Galerie</h3>
-              </a>
+            </a>
             <div class="hamburger-menu">
               <div class="bar"></div>
             </div>
@@ -54,7 +54,19 @@
               <a href="index.html" style="--i: 0.05s;">Home</a>
             </li>
             <li>
-              <a href="pakketten.html" style="--i: 0.1s;">Poetspakketten</a>
+              <a href="pakketten.html" style="--i: 0.1s;" id="poetspakketten-link">Poetspakketten</a> 
+              <span class="submenu-toggle"> <i class="fas fa-chevron-down"></i></span>
+              <ul id="submenu" class="submenu">
+                  <li class="submenu-content">
+                    <a href="pakketten.html" style="--i: 0.1s;">Poetspakketten</a>
+                  </li>
+                  <li>
+                    <a href="pakketten.html" style="--i: 0.1s;">Poetspakketten</a>
+                  </li>
+                  <li>
+                    <a href="pakketten.html" style="--i: 0.1s;">Poetspakketten</a>
+                  </li>
+              </ul>
             </li>
             <li>
               <a href="projecten.html" style="--i: 0.15s;">Projecten</a>
@@ -146,9 +158,11 @@
                     <div class="img-bg"></div>
                     <img src="img/polijsten-4.jpg" alt="Brohm Lake">
                     </div>
-            
-                    <a href= "interieurreiniging.html" class="btn"><span></span>Meer informatie</a>
-            
+                    
+                    <div>
+                        <a href= "interieurreiniging.html" class="btn"><span></span>Meer informatie</a>
+                    </div>
+
                     <div class="design-container">
                     <span class="design design--1"></span>
                     <span class="design design--2"></span>
@@ -206,8 +220,10 @@
                     <img src="img/matten.jpg" alt="image-2">
                     </div>
             
-                    <a href= "exterieurreiniging.html" class="btn"><span></span>Meer informatie</a>
-            
+                    <div>
+                        <a href= "exterieurreiniging.html" class="btn"><span></span>Meer informatie</a>
+                    </div>
+
                     <div class="design-container">
                     <span class="design design--1"></span>
                     <span class="design design--2"></span>
@@ -250,9 +266,11 @@
                     <div class="img-bg"></div>
                     <img src="img/poetsen.jpg" alt="Brohm Lake">
                     </div>
-            
-                    <a href= "volledige-reiniging.html" class="btn"><span></span>Meer informatie</a>
-            
+                    
+                    <div>
+                        <a href= "volledige-reiniging.html" class="btn"><span></span>Meer informatie</a>
+                    </div>
+
                     <!-- can add svg here and remove these eight spans -->
                     <div class="design-container">
                     <span class="design design--1"></span>
@@ -295,9 +313,11 @@
                     <div class="img-bg"></div>
                     <img src="img/polijsten-4.jpg" alt="Brohm Lake">
                     </div>
-            
-                    <a href= "ceramische-coating.html" class="btn"><span></span>Meer informatie</a>
-            
+                    
+                    <div>
+                        <a href= "ceramische-coating.html" class="btn"><span></span>Meer informatie</a>
+                    </div>
+
                     <div class="design-container">
                     <span class="design design--1"></span>
                     <span class="design design--2"></span>
@@ -339,9 +359,11 @@
                     <div class="img-bg"></div>
                     <img src="img/matten.jpg" alt="image-2">
                     </div>
-            
-                    <a href= "reparatie.html" class="btn"><span></span>Meer informatie</a>
-            
+                    
+                    <div>
+                        <a href= "reparatie.html" class="btn"><span></span>Meer informatie</a>
+                    </div>
+
                     <div class="design-container">
                     <span class="design design--1"></span>
                     <span class="design design--2"></span>
@@ -384,9 +406,11 @@
                     <div class="img-bg"></div>
                     <img src="img/poetsen.jpg" alt="Brohm Lake">
                     </div>
-            
-                    <a href= "schadeherstel.html" class="btn"><span></span>Meer informatie</a>
-            
+                    
+                    <div>
+                        <a href= "schadeherstel.html" class="btn"><span></span>Meer informatie</a>
+                    </div>
+                    
                     <!-- can add svg here and remove these eight spans -->
                     <div class="design-container">
                     <span class="design design--1"></span>
@@ -476,7 +500,7 @@
             <p>Website made by</p> 
             <a href="https://nodesigns.nl">NoDesigns</a>
         </div>
-
+    </footer>
 
 
 
