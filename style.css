@@ -14,8 +14,7 @@ font-family: 'Source Code Pro', monospace; */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 :root {
-    /* --primary-color: #9740c9; */
-    --primary-color: #de30cd;
+    --primary-color: #9740c9;
     --black-color: rgb(20, 20, 20);
     --dark-black: rgb(7, 7, 7);
     --white-color: #fff;
@@ -129,7 +128,7 @@ font-family: 'Source Code Pro', monospace; */
   }
   
   .nav-container.active .nav-main {
-    animation: main-animation 0.5s ease;
+    animation: main-animation 0.5s ease, nav-links-animation 0.5s 0.5s ease forwards;
     cursor: pointer;
     transform: perspective(1200px) rotateY(20deg) translateZ(310px) scale(0.5);
   }
@@ -162,12 +161,34 @@ font-family: 'Source Code Pro', monospace; */
     transition: 0.3s;
     opacity: 0;
     transform: translateY(10px);
-    animation: hide 0.5s forwards ease;
+    animation: hide 1.5s forwards ease;
+    margin-left: 20px;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 2px;
+    font-size: 20px;
   }
   
-  .nav-container.active .nav-links a {
-    animation: appear 0.5s forwards ease var(--i);
+  .nav-container.active .nav-links a{
+    animation: appear 1.5s forwards ease var(--i);
   }
+
+  .hidden {
+    opacity: 0;
+  }
+
+  .fade-in {
+    animation: fadeIn 1s ease-in forwards var(--i);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   
   @keyframes appear {
     from {
@@ -250,14 +271,54 @@ font-family: 'Source Code Pro', monospace; */
       transform: perspective(1300px) rotateY(20deg) translateZ(120px) scale(0.5);
     }
   }
-  
-  .nav-container.active .nav-main:hover + .shadow.one {
-    transform: perspective(1300px) rotateY(20deg) translateZ(230px) scale(0.5);
+
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  .submenu-toggle {
+    cursor: pointer;
+    display: inline-block;
+  }
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ff1414;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .submenu-content {
+    display: inline-block;
+  }
+  .submenu li {
+    border-bottom: 1px solid #ddd;
   }
   
-  .nav-container.active .nav-main:hover {
-    transform: perspective(1300px) rotateY(20deg) translateZ(340px) scale(0.5);
+  .submenu li:last-child {
+    border-bottom: none;
   }
+  
+  .submenu li a {
+    display: block;
+    padding: 10px;
+    color: #333;
+  }
+  
+  .submenu-toggle i {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+
+
+
+
+
+
   
 /* Header */
 .header {
@@ -464,46 +525,92 @@ font-family: 'Source Code Pro', monospace; */
 }
 
 
+/***** Pakketten *****/
+.index-cards-container {
+  padding-bottom: 4rem
+}
+
 
 /***** Projecten *****/
-/* Projecten before-after slider */
+/* Carousel */
+.carousel {
+  --current-slide: 0;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4em
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  padding: -100px;
+  margin: 0 10%;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--white-smoke);
+  border: none;
+
+  font-size: 2.5rem;
+  cursor: pointer;
+
+  transition: color 0.5s;
+}
+
+.carousel-button_next {
+  right: 0;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s;
+  transform: translateX(calc(-100% * var(--current-slide)));
+}
+
+.slide {
+  flex: 0 0 100%;
+}
+
+/* Before-after slider */
 .line-container{
-    margin: 70px auto;
+  margin: 70px auto;
 }
 
 .line1 {
-    margin-top: -1px;
+  margin-top: -1px;
 }
 
 .bef-aft-slider {	
-	--width: 794px;
-	--height: 446px;
-	
-	position: relative;
-	width: var(--width);
-	height: var(--height);
-	overflow: hidden;	
+--width: 794px;
+--height: 446px;
+
+position: relative;
+width: var(--width);
+height: var(--height);
+overflow: hidden;	
 }
 
 .image__img {
-    background: url('/img/poetsen.jpg');
-    position: absolute;
-    height: 100%;
-    background-size: var(--width) var(--height);
+  background: url('/img/poetsen.jpg');
+  position: absolute;
+  height: 100%;
+  background-size: var(--width) var(--height);
 }
 
 .image__img:first-child {
-    left: 0;
-    width: 100%;
-    background-position: center left;
+  left: 0;
+  width: 100%;
+  background-position: center left;
 }
 
 .image__img:last-child {
-    right: 0;
-    width: calc(100% - var(--x, 50%));
-    background-position: center right;
-    filter: grayscale(100%);
-    box-shadow: inset 2px 0 0 #111, -2px 0 0 #111;
+  right: 0;
+  width: calc(100% - var(--x, 50%));
+  background-position: center right;
+  filter: grayscale(100%);
+  box-shadow: inset 2px 0 0 #111, -2px 0 0 #111;
 }
 
 
@@ -541,8 +648,108 @@ font-family: 'Source Code Pro', monospace; */
   padding: 10px;
 } */
 
+/* Personeel cards */
+.personeel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.personeel-card {
+	border-radius: 50px;
+  background: var(--dark-black);
+  position:relative;
+	overflow: hidden;
+	text-align:center;
+  margin: 20px 30px;
+  max-width: 25%;
+  min-width: 25%;
+  padding: 30px 0px;
+}
+.personeel-card:before {
+    position: absolute;
+    content: '';
+    left: 0px;
+    top: 0px;
+    width: 0px;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    background-image: linear-gradient(to right, var(--white-smoke) 0%, var(--primary-color) 100%);
+}
+
+.image-wrapper {
+  position: relative;
+	max-width: 210px;
+  max-height: 210px;
+	margin:0 auto;
+  overflow: hidden;
+  border-radius: 50vw;
+  padding: 15px;
+  transition: all 0.5s ease;
+}
+.image-wrapper img {
+  border-radius: 50vw;
+  transition: all 0.5s ease;
+  width: 100%;
+}
+.personeel-card-title {
+	position:relative;
+  margin: 20px;
+}
+ul.social {
+	padding:0;
+}
+ul.social li {
+	display:inline-block;
+	list-style-type:none;
+}
+ul.social li a {
+	position:relative;
+	width: 36px;
+  height: 36px;
+  background-image: linear-gradient(to right, var(--white-smoke) 0%, var(--primary-color) 100%);
+	display:inline-block;
+	line-height:36px;
+	border-radius:50%;
+	color:#fff;
+	transition: all .5s ease;
+}
+
+.personeel-card-text {
+  margin: 0 auto;
+  width: 85%;
+  padding: 20px;
+  position: relative;
+}
 
 
+/* Startup verhaal */
+.startup {
+  background-image:  linear-gradient(to bottom, rgba(0, 0, 0, 0.6),#000000), url(/img/polijsten-2.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 50%;
+}
+
+.startup-text {
+  flex-basis: 50%;
+}
+
+.startup-img {
+  display: flex;
+  justify-content: center;
+  flex-basis: 50%;
+}
+.startup-img img {
+  width: 50%;
+  border-radius: 50px;
+  padding-bottom: 4rem;
+}
 
 
 
@@ -636,7 +843,7 @@ font-family: 'Source Code Pro', monospace; */
   align-items: center;
   width: 70px;
   height: 70px;
-  background-color: var(--primary-color);
+  background-image: linear-gradient(to right, var(--white-smoke) 0%, var(--primary-color) 100%);
   border-radius: 10px;
   color: var(--black-color);
 }
@@ -666,7 +873,7 @@ footer .footer-menu i{
 
 footer .social-icons i {
   padding: 5px;
-  background-color: var(--primary-color);
+  background-image: linear-gradient(to right, var(--white-smoke) 0%, var(--primary-color) 100%);
   border-radius: 10px;
   color: var(--black-color);
 
@@ -679,4 +886,6 @@ footer .dotted-line {
 footer .designed-by {
   padding: 20px;
 } 
+
+
 
