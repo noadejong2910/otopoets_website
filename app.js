@@ -1,36 +1,45 @@
 // Navbar
 const hamburger_menu = document.querySelector(".hamburger-menu");
 const nav_container = document.querySelector(".nav-container");
+const body = document.querySelector("body");
 
 hamburger_menu.addEventListener("click", () => {
     nav_container.classList.toggle("active");
+    body.classList.toggle("no-scroll");
 });
 
+// var submenu = document.getElementById('submenu');
+// var link = document.getElementById('poetspakketten-link');
 
-// Flipcards
-// document.addEventListener("DOMContentLoaded", function() {
-//   var flipContainers = document.querySelectorAll(".flip-container");
-//   for (var i = 0; i < flipContainers.length; i++) {
-//     flipContainers[i].addEventListener("click", function() {
-//       this.classList.toggle("touch");
-//     }, false);
+// link.addEventListener('click', function() {
+//   if (submenu.style.display === 'none') {
+//     submenu.style.display = 'block';
+//   } else {
+//     submenu.style.display = 'none';
 //   }
 // });
 
-// Touch mobile 
-// document.addEventListener("touchstart", e => {
-//   console.log("Start")
-// })
+// const toggleSubMenu = document.querySelector('.submenu-toggle');
+// const subMenu = document.querySelector('.submenu');
 
-// Move mobile 
-// document.addEventListener("touchmove", e => {
-//   console.log("Move")
-// })
+// toggleSubMenu.addEventListener('click', function() {
+//   subMenu.classList.toggle('active');
+// });
 
-// End touch mobile 
-// document.addEventListener("touchend", e => {
-//   console.log("End")
-// })
+
+const submenuToggle = document.querySelector('.submenu-toggle');
+const submenu = document.querySelector('.submenu');
+
+submenuToggle.addEventListener('click', function() {
+  if (submenu.style.display === 'block') {
+    submenu.style.display = 'none';
+  } else {
+    submenu.style.display = 'block';
+  }
+});
+
+
+
 
 // Mobile touch
 const elements = document.querySelectorAll(".btn, .icon-item");
@@ -56,7 +65,7 @@ elements.forEach((element) => {
 });
 
 
-// Before-After Slider
+// Before-After Slider Computer
 document.querySelectorAll('.bef-aft-slider').forEach((elem) => {
 	
 	let x, width
@@ -80,7 +89,7 @@ document.querySelectorAll('.bef-aft-slider').forEach((elem) => {
 })
 
 
-// Before-After Slider
+// Before-After Slider Mobiel
 document.querySelectorAll('.bef-aft-slider').forEach((elem) => {
   
   let x, width
@@ -107,37 +116,48 @@ document.querySelectorAll('.bef-aft-slider').forEach((elem) => {
 })
 
 
-// Carrousel
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
-const images = document.querySelector('.carousel').children;
-const totalImages = images.length;
-let index = 0;
-
-prev.addEventListener('click', () => {
-  nextImage('next');
-})
-
-next.addEventListener('click', () => {
-  nextImage('prev');
-})
-
-function nextImage(direction) {
-  if(direction == 'next') {
-    index++;
-    if(index == totalImages) {
-      index = 0;
-    }
-  } else {
-    if(index == 0) {
-      index = totalImages - 1;
-    } else {
-      index--;
-    }
+function modulo(number, mod) {
+  let result = number % mod;
+  if (result < 0) { 
+    result += mod;
   }
-
-  for(let i = 0; i < images.length; i++) {
-    images[i].classList.remove('main');
-  }
-  images[index].classList.add('main');
+  return result;
 }
+
+
+// Carousel
+function setUpCarousel(carousel) {
+  function handleNext() {
+    currentSlide = modulo(currentSlide + 1, numSlides);
+    changeSlide(currentSlide);
+  }
+
+  function handlePrevious() {
+    currentSlide = modulo(currentSlide - 1, numSlides);
+    changeSlide(currentSlide);
+  }
+
+  function changeSlide(slideNumber) {
+    carousel.style.setProperty('--current-slide', slideNumber);
+  }
+
+  const buttonPrevious = carousel.querySelector('[data-carousel-button-previous]');
+  const buttonNext = carousel.querySelector('[data-carousel-button-next]');
+  const slidesContainer = carousel.querySelector('[data-carousel-slides-container]');
+
+  let currentSlide = 0;
+  const numSlides = slidesContainer.children.length;
+
+  buttonPrevious.addEventListener('click', handlePrevious);
+  buttonNext.addEventListener('click', handleNext);
+}
+
+const carousels = document.querySelectorAll('[data-carousel]');
+carousels.forEach(setUpCarousel);
+
+
+
+
+
+
+
