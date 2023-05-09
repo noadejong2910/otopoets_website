@@ -1,3 +1,9 @@
+@media screen and (max-width: 1100px) {
+    .personeel-card {
+        min-width: 40%;
+    }
+}
+
 @media screen and (max-width: 768px) {
     /* Algemeen */
     body {
@@ -54,6 +60,10 @@
           transform: perspective(1300px) rotateY(20deg) translateZ(115px) scale(0.5);
         }
       }
+
+    .nav-container.active .nav-links a {
+        animation: appear 5s forwards ease var(--i);
+    }
 
     .nav-container.active .shadow.one {
         animation: shadow-one 0.6s ease-out;
@@ -119,13 +129,32 @@
 
 
     /***** Projecten *****/
+    .carousel-button {
+        margin: 0 2%;
+        font-size: 2rem
+    }
     .bef-aft-slider {	
-        --width: 350px;
-        --height: 235px;
+        --width: 325px;
+        --height: 220px;
     }
 
 
 
+    /***** Over ons *****/
+    .personeel-card {
+        min-width: 85%
+    }
+
+    .startup {
+        flex-wrap: wrap;
+        text-align: center;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .startup-img img {
+        width: 80%;
+    }
 
 
 
@@ -203,12 +232,18 @@
     .btn.touch-hover-effect,
     .btn.click-effect {
         border: none;
+        color: var(--dark-black);
     }
 
     .btn:hover,
     .btn.touch-hover-effect span,    
     .btn.click-effect span {
         width: 100%;
+    }
+
+    /* Nav */
+    .nav-container.active .nav-links a {
+        animation: appear 0.5s forwards ease var(--i);
     }
 
     /* Icon items */
@@ -226,19 +261,75 @@
         border-left-color: var(--primary);
         border-right-color: var(--primary);
     }
-  }
+
+    .flip-card button:hover,
+    .flip-card button:active,
+    .flip-card button:focus,
+    .flip-card button.touch-hover-effect {
+        color: var(--primary);
+        border-color: currentColor;
+    }
+    
+    .flip-card-container:hover .flip-card,
+    .flip-card-container:active .flip-card,
+    .flip-card-container:focus-within .flip-card,
+    .flip-card-container.touch-hover-effect .flip-card {
+        transform: rotateY(180deg);
+    }
+
+    /* Personeel cards */
+    .personeel-card:hover:before, 
+    .personeel-card.touch-hover-effect {
+        width: 100%;
+    }
+    .personeel-card:hover .image-wrapper,
+    .personeel.card.touch-hover-effect .image-wrapper {
+        padding:0;
+    }
+    .personeel-card:hover .personeel-card-title,
+    .personeel-card:hover .personeel-card-text,
+    .personeel-card.touch-hover-effect .personeel-card-title,
+    .personeel.card.touch-hover-effect .personeel-card-text {
+        color: var(--white-smoke)
+    }
+    .personeel-card:hover .social li a,
+    .personeel-card.touch-hover-effect .social li a {
+        background: var(--white-color);
+        background-image: none;
+        color: var(--dark-black);
+    }
+    .personeel-card:hover .social li a:hover,
+    .personeel-card.touch-hover-effect .social li a.touch-hover-effect {
+        background: var(--dark-black);
+        color: var(--white-color);
+    }
+}
 
 @media (hover:hover) {
+
+    a:hover {
+        width: 100%;
+    }
     /* Button */
     .btn:hover,
     .btn:active {
         border: none;
+        color: var(--dark-black);
     } 
 
     .btn:hover span,
     .btn:active span {
         width: 100%;
     }
+
+    /* Nav */
+    .nav-container.active .nav-main:hover + .shadow.one {
+        transform: perspective(1300px) rotateY(20deg) translateZ(230px) scale(0.5);
+    }
+      
+    .nav-container.active .nav-main:hover {
+        transform: perspective(1300px) rotateY(20deg) translateZ(340px) scale(0.5);
+    } 
 
     /* Icon items */
     .icon-item:hover i {
@@ -253,5 +344,32 @@
         width: 6px;
         border-left-color: var(--primary);
         border-right-color: var(--primary);
+    }
+
+    .flip-card-container:hover .flip-card,
+    .flip-card-container:active .flip-card,
+    .flip-card-container:focus-within .flip-card {
+        transform: rotateY(180deg);
+    }
+
+    /* Personeel cards */
+    .personeel-card:hover:before {
+        width: 100%;
+    }
+    .personeel-card:hover .image-wrapper {
+        padding:0;
+    }
+    .personeel-card:hover .personeel-card-title,
+    .personeel-card:hover .personeel-card-text {
+        color: var(--white-smoke)
+    }
+    .personeel-card:hover .social li a {
+        background: var(--white-color);
+        background-image: none;
+        color: var(--dark-black);
+    }
+    .personeel-card:hover .social li a:hover {
+        background: var(--dark-black);
+        color: var(--white-color);
     }
 } 
